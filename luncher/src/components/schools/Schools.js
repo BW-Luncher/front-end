@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import schoolInformation from "../../data/data";
 import SchoolCard from "./SchoolCard";
-// import axios from 'axios';
 
 const Schools = () => {
   const [school] = useState(schoolInformation);
 
-  //   useEffect(() => {
-  //        axios
-  //         .get(`http://localhost:6600/api/schools`)
-  //         .then(response => {
-  //         //   setMovie(response.data);
-  //         console.log(response)
-  //         })
-  //         .catch(error => {
-  //           console.error("Data not returned", error.response);
-  //         });
+  useEffect(() => {
+    axios
+      // .get("https://reqres.in/api/users")
+      .get("https://lambdaluncher.herokuapp.com/api/schools")
+      .then(res => {
+        // setSchool(response.data);
+        // eslint-disable-next-line no-console
+        console.log(res);
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log(err, err.response);
 
-  //   },[]);
+        // console.log(err.response);
+      });
+  }, []);
 
   return (
     <div style={SchoolsStyleDiv}>
@@ -28,7 +32,6 @@ const Schools = () => {
   );
 };
 
-// put schools that need donation into grid pattern
 const SchoolsStyleDiv = {
   display: 'grid',
   

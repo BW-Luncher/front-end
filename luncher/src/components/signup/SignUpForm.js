@@ -1,5 +1,8 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import React from "react";
 import { Formik } from "formik";
+// import axios from "axios";
 
 function SignUpForm() {
   return (
@@ -35,6 +38,8 @@ function SignUpForm() {
         </div>
         <div className="input-row">
           <button type="submit">Submit</button>
+
+          <button type="reset">Reset</button>
         </div>
       </form>
     </Formik>
