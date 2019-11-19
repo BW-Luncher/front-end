@@ -10,7 +10,7 @@ const SchoolCard = ({ id, school, email, address, funds_needed, funds_given, goa
 		align-items: center;
 		border: solid 2px black;
 		border-radius: 10px;
-		margin: 20px 10px;
+		margin: 20px 10px; 
 		font-size: .8rem;
 	`;
 
