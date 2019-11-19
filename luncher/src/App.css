@@ -1,17 +1,16 @@
-.App {
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+body {
   text-align: center;
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+img {
+  width: 100%;
+}
 
 nav {
   display: flex;
@@ -56,19 +55,26 @@ label {
 input {
   width: 100%;
   padding: 5px;
-}
-
-input[type="password"] {
-  letter-spacing: 0.3em;
-}
-input[type="text"] {
   letter-spacing: 0.3em;
 }
 
 button {
   border-radius: 0px;
   padding: 5px 15px;
+  margin: 10px 10px;
   background: none;
   border: 1px solid #607d8b;
   cursor: pointer;
+}
+
+.register {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5% 0;
+}
+
+.register a {
+  color: black;
 }

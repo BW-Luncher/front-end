@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const LoginForm = props => {
   const [credentials, setCredentials] = useState({
@@ -23,41 +25,38 @@ const LoginForm = props => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/profile");
       })
-      .catch(err =>
-        // eslint-disable-next-line no-console
-        console.log(err, err.response)
-      );
+      .catch(err => console.log(err, err.response));
   };
 
   return (
     <Formik>
       <form onSubmit={login}>
-        <div className="input-row">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Enter username"
-            value={credentials.username}
-            onChange={handleChange}
-          />
-        </div>
+        <h1>LOGIN:</h1>
+        <input
+          className="input-row"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter username"
+          value={credentials.username}
+          onChange={handleChange}
+        />
 
-        <div className="input-row">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter Password"
-            value={credentials.password}
-            onChange={handleChange}
-          />
-        </div>
+        <input
+          className="input-row"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter Password"
+          value={credentials.password}
+          onChange={handleChange}
+        />
 
-        <div className="input-row">
-          <button type="submit">Submit</button>
+        <button type="submit">Login</button>
+
+        <div className="register">
+          <p>Not a Member?</p>
+          <Link to="/signup"> Register Here</Link>
         </div>
       </form>
     </Formik>

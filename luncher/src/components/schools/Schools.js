@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import schoolInformation from "../../data/data";
@@ -21,14 +22,11 @@ const Schools = () => {
       .get("http://lambdaluncher.herokuapp.com/api/schools")
       .then(res => {
         setSchool(res.data);
-        // eslint-disable-next-line no-console
       })
       .catch(err => {
-        // eslint-disable-next-line no-console
         console.log(err, err.response);
       });
   }, []);
-
   return (
     <div style={SchoolsStyleDiv}>
       {school.map((schools, { id }) => (
