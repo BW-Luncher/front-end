@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import schoolInformation from "../../data/data";
 import SchoolCard from "./SchoolCard";
+import styled from 'styled-components';
+
 
 const SchoolsStyleDiv = {
   display: 'grid',
-  
   gridGap: '1rem',
   gridTemplateColumns: 'repeat(auto-fill, 390px)',
   fontSize: '15px',
@@ -13,6 +14,8 @@ const SchoolsStyleDiv = {
   justifyContent: 'center',
   width: '90%'
 }
+
+const DivContainerStyle = styled.div``;
 
 const Schools = () => {
   const [school] = useState(schoolInformation);
@@ -35,11 +38,13 @@ const Schools = () => {
   }, []);
 
   return (
-    <div style={SchoolsStyleDiv}>
-      {school.map((schools, { id }) => (
-        <SchoolCard key={id} {...schools} />
-      ))}
-    </div>
+    <DivContainerStyle>
+      <div style={SchoolsStyleDiv}>
+        {school.map((schools, { id }) => (
+          <SchoolCard key={id} {...schools} />
+        ))}
+      </div>
+    </DivContainerStyle>
   );
 };
 

@@ -3,9 +3,10 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/Header";
-import LoginForm from "./components/login/LoginForm";
+import FormikLoginForm from "./components/login/LoginForm";
 import Schools from "./components/schools/Schools";
-import SignUpForm from "./components/signup/SignUpForm";
+import FormikSignUpForm from "./components/signup/SignUpForm";
+
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
         <Header />
         <Switch>
           <Route component={Schools} exact path="/" />
-          <Route component={LoginForm} path="/login" />
-          <Route component={SignUpForm} path="/signup" />
+          <Route component={FormikLoginForm} path="/login" />
+          <Route component={FormikSignUpForm} path="/signup" />
         </Switch>
       </Router>
     </div>

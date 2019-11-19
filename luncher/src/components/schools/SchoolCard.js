@@ -12,6 +12,7 @@ const SchoolCard = ({ id, school, email, address, funds_needed, funds_given, goa
 		border-radius: 10px;
 		margin: 20px 10px; 
 		font-size: .8rem;
+		background-color: #fffff5;
 	`;
 
 	const DivContainer = styled.div`margin: 20px;`;

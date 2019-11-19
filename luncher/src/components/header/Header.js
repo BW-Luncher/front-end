@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
   float: left;
   color: white;
   display: block;
-  color: white;
+  color: #1D17C7;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

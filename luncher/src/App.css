@@ -1,5 +1,10 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+* {
+  margin: 0;
+  font-family: 'Alata', sans-serif;
 }
 
 /* .App-header {
@@ -16,26 +21,36 @@
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: #333;
+  background-color: #EDC7B7;
 }
 
 .navbar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 30px;
   overflow: hidden;
+}
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 a {
   text-decoration: none;
   float: left;
-  color: white;
   display: block;
-  color: white;
+  color: #123C69;;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
+  font-weight: bold;
 }
 
 form {
