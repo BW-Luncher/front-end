@@ -25,10 +25,7 @@ const LoginForm = props => {
       })
       .catch(err =>
         // eslint-disable-next-line no-console
-        console.log(
-          `ERROR: *** ${err.response.data.message} *** ${err.response.statusText} ***`,
-          err.response
-        )
+        console.log(err, err.response)
       );
   };
 

@@ -3,12 +3,13 @@ import axios from "axios";
 import schoolInformation from "../../data/data";
 import SchoolCard from "./SchoolCard";
 
-const Movie = () => {
+const Schools = () => {
   const [school] = useState(schoolInformation);
 
   useEffect(() => {
     axios
-      .get(`https://lambdaluncher.herokuapp.com/api/schools`)
+      // .get("https://reqres.in/api/users")
+      .get("https://lambdaluncher.herokuapp.com/api/schools")
       .then(res => {
         // setSchool(response.data);
         // eslint-disable-next-line no-console
@@ -16,10 +17,9 @@ const Movie = () => {
       })
       .catch(err => {
         // eslint-disable-next-line no-console
-        console.log(
-          `ERROR: *** ${err.response.data.message} *** ${err.response.statusText} ***`,
-          err.response
-        );
+        console.log(err, err.response);
+
+        // console.log(err.response);
       });
   }, []);
 
@@ -32,4 +32,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default Schools;
