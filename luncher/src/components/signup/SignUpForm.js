@@ -1,7 +1,10 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import React from "react";
 import { Formik } from "formik";
+// import axios from "axios";
 
-function SignUpForm() {
+function SignUpForm({ isSubmitting }) {
   return (
     <Formik>
       <form>
@@ -34,11 +37,33 @@ function SignUpForm() {
           />
         </div>
         <div className="input-row">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+
+          <button type="reset">Reset</button>
         </div>
       </form>
     </Formik>
   );
 }
+
+// handleSubmit(values, { resetForm, setSubmitting }){
+//   axios
+//     .post("http://lambdaluncher.herokuapp.com/api/auth/login", values)
+//     .then(res => {
+//       console.log(res); // Data was created successfully and logs to console
+//       resetForm();
+//       setSubmitting(false);
+//     })
+//     .then(res => {
+//       console.log("res", res);
+//       alert("An Account was created, Please Login.");
+//     })
+//     .catch(err => {
+//       console.log(err.response); // There was an error creating the data and logs to console
+//       setSubmitting(false);
+//     });
+// }(SignUpForm);
 
 export default SignUpForm;

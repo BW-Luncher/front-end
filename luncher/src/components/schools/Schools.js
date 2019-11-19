@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import schoolInformation from "../../data/data";
 import SchoolCard from "./SchoolCard";
-// import axios from 'axios';
 
 const Movie = () => {
   const [school] = useState(schoolInformation);
 
-  //   useEffect(() => {
-  //        axios
-  //         .get(`http://localhost:6600/api/schools`)
-  //         .then(response => {
-  //         //   setMovie(response.data);
-  //         console.log(response)
-  //         })
-  //         .catch(error => {
-  //           console.error("Data not returned", error.response);
-  //         });
-
-  //   },[]);
+  useEffect(() => {
+    axios
+      .get(`http://lambdaluncher.herokuapp.com/api/schools`)
+      .then(response => {
+        // setSchool(response.data);
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error("ERROR:", error.response.data);
+      });
+  }, []);
 
   return (
     <div>
