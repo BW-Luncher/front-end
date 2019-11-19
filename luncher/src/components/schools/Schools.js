@@ -3,7 +3,7 @@ import schoolInformation from "../../data/data";
 import SchoolCard from "./SchoolCard";
 // import axios from 'axios';
 
-const Movie = () => {
+const Schools = () => {
   const [school] = useState(schoolInformation);
 
   //   useEffect(() => {
@@ -20,7 +20,7 @@ const Movie = () => {
   //   },[]);
 
   return (
-    <div>
+    <div style={SchoolsStyleDiv}>
       {school.map((schools, { id }) => (
         <SchoolCard key={id} {...schools} />
       ))}
@@ -28,4 +28,16 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+// put schools that need donation into grid pattern
+const SchoolsStyleDiv = {
+  display: 'grid',
+  
+  gridGap: '1rem',
+  gridTemplateColumns: 'repeat(auto-fill, 390px)',
+  fontSize: '15px',
+  margin: ' auto',
+  justifyContent: 'center',
+  width: '90%'
+}
+
+export default Schools;

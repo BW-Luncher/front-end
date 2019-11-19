@@ -5,6 +5,7 @@ function LoginForm() {
   return (
     <Formik>
       <form>
+      <h1>Login</h1>
         <div className="input-row">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" placeholder="Enter Name" />

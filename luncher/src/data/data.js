@@ -1,44 +1,94 @@
 const schoolInformation = [
   {
     id: 0,
-    school: "Academy for Career Exploration",
+    school: "Pre-School",
     school_insignia: "",
     address: "123 street",
-    email: "whatever@whatever",
+    email: "email@email.edu",
     funds_needed: 1000,
     funds_given: 1000,
     goal: 2000
   },
   {
     id: 1,
-    school: "School Academy",
+    school: "Elementary School",
     school_insignia: "",
-    address: "wherever",
-    email: "whatever@whatever",
+    address: "123 street",
+    email: "email@email.edu",
     funds_needed: 1000,
     funds_given: 1000,
     goal: 2000
   },
   {
     id: 2,
-    school: "GodFather HS",
+    school: "Elementary School",
     school_insignia: "",
-    address: "wherever",
-    email: "whatever@whatever",
+    address: "123 street",
+    email: "email@email.edu",
     funds_needed: 1000,
     funds_given: 1000,
     goal: 2000
   },
   {
     id: 3,
-    school: "Perry Middle School",
+    school: "Middle School",
     school_insignia: "",
-    address: "wherever",
-    email: "whatever@whatever",
+    address: "123 street",
+    email: "email@email.edu",
     funds_needed: 1000,
     funds_given: 1000,
     goal: 2000
-  }
+  },
+  {
+    id: 4,
+    school: "Middle School",
+    school_insignia: "",
+    address: "123 street",
+    email: "email@email.edu",
+    funds_needed: 1000,
+    funds_given: 1000,
+    goal: 2000
+  },
+  {
+    id: 5,
+    school: "Middle School",
+    school_insignia: "",
+    address: "123 street",
+    email: "email@email.edu",
+    funds_needed: 1000,
+    funds_given: 1000,
+    goal: 2000
+  },
+  {
+    id: 6,
+    school: "Middle School",
+    school_insignia: "",
+    address: "123 street",
+    email: "email@email.edu",
+    funds_needed: 1000,
+    funds_given: 1000,
+    goal: 2000
+  },
+  {
+    id: 7,
+    school: "High School",
+    school_insignia: "",
+    address: "123 street",
+    email: "email@email.edu",
+    funds_needed: 1000,
+    funds_given: 1000,
+    goal: 2000
+  },
+  {
+    id: 8,
+    school: "High School",
+    school_insignia: "",
+    address: "123 street",
+    email: "email@email.edu",
+    funds_needed: 1000,
+    funds_given: 1000,
+    goal: 2000
+  },
 ];
 
 export default schoolInformation;
