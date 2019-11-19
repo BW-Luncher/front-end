@@ -4,7 +4,7 @@ import React from "react";
 import { Formik } from "formik";
 // import axios from "axios";
 
-function SignUpForm({ isSubmitting }) {
+function SignUpForm() {
   return (
     <Formik>
       <form>
@@ -37,9 +37,7 @@ function SignUpForm({ isSubmitting }) {
           />
         </div>
         <div className="input-row">
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
 
           <button type="reset">Reset</button>
         </div>
@@ -47,23 +45,5 @@ function SignUpForm({ isSubmitting }) {
     </Formik>
   );
 }
-
-// handleSubmit(values, { resetForm, setSubmitting }){
-//   axios
-//     .post("http://lambdaluncher.herokuapp.com/api/auth/login", values)
-//     .then(res => {
-//       console.log(res); // Data was created successfully and logs to console
-//       resetForm();
-//       setSubmitting(false);
-//     })
-//     .then(res => {
-//       console.log("res", res);
-//       alert("An Account was created, Please Login.");
-//     })
-//     .catch(err => {
-//       console.log(err.response); // There was an error creating the data and logs to console
-//       setSubmitting(false);
-//     });
-// }(SignUpForm);
 
 export default SignUpForm;

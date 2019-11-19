@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const LoginForm = props => {
   const [credentials, setCredentials] = useState({
-    email: "",
+    username: "",
     password: ""
   });
 
@@ -23,21 +23,26 @@ const LoginForm = props => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/profile");
       })
-      // eslint-disable-next-line no-console
-      .catch(err => console.log(err.response));
+      .catch(err =>
+        // eslint-disable-next-line no-console
+        console.log(
+          `ERROR: *** ${err.response.data.message} *** ${err.response.statusText} ***`,
+          err.response
+        )
+      );
   };
 
   return (
     <Formik>
       <form onSubmit={login}>
         <div className="input-row">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
-            name="email"
-            id="email"
-            placeholder="Enter Email"
-            value={credentials.email}
+            name="username"
+            id="username"
+            placeholder="Enter username"
+            value={credentials.username}
             onChange={handleChange}
           />
         </div>

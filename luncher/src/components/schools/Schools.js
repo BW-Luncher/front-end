@@ -8,15 +8,18 @@ const Movie = () => {
 
   useEffect(() => {
     axios
-      .get(`http://lambdaluncher.herokuapp.com/api/schools`)
-      .then(response => {
+      .get(`https://lambdaluncher.herokuapp.com/api/schools`)
+      .then(res => {
         // setSchool(response.data);
         // eslint-disable-next-line no-console
-        console.log(response);
+        console.log(res);
       })
-      .catch(error => {
+      .catch(err => {
         // eslint-disable-next-line no-console
-        console.error("ERROR:", error.response.data);
+        console.log(
+          `ERROR: *** ${err.response.data.message} *** ${err.response.statusText} ***`,
+          err.response
+        );
       });
   }, []);
 
