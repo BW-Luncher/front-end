@@ -18,7 +18,7 @@ const Header = () => (
   <nav>
     <div className="navbar">
       <a href="http://htmlpreview.github.io/?https://github.com/BW-Luncher/marketing/blob/jonathan-hanson/index.html">
-        Home
+        Luncher
       </a>
       <StyledLink to="/">Schools</StyledLink>
     </div>
