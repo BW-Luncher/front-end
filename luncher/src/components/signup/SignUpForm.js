@@ -25,7 +25,7 @@ function SignUpForm() {
         />
         <button type="submit">Sign Up</button>
         <div className="center">
-          <Link to="/signup">Already a Member? Login Here</Link>
+          <Link to="/login">Already a Member? Login Here</Link>
         </div>
       </Form>
     </div>
