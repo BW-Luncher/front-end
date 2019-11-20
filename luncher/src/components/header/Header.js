@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
   float: left;
   color: white;
   display: block;
-  color: #1D17C7;
+  color: #1d17c7;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 const Header = () => (
   <nav>
     <div className="navbar">
-      <a href="http://htmlpreview.github.io/?https://github.com/BW-Luncher/marketing/blob/jonathan-hanson/index.html">
+      <a href="https://suspicious-hermann-726996.netlify.com/index.html">
         Luncher
       </a>
       <StyledLink to="/">Schools</StyledLink>
