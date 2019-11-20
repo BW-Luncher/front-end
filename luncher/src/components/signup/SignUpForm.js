@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 function SignUpForm() {
 	return (
 		<div>
-			<Form>
+      <Form>
+      <h1 className="title">Create Your Account</h1>
 				<Field className="input-row" type="text" name="username" placeholder="Create Username" required />
 				<Field className="input-row" type="text" name="pasword" placeholder="Create Password" required />
 				<button type="submit">Sign Up</button>
