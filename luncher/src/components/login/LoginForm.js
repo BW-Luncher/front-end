@@ -7,35 +7,40 @@ import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import Error from "../error/Error";
 
-const LoginForm = ({ errors, touched, isSubmitting }) => (
-  <div>
-    <Form>
-      <h1 className="title">Login</h1>
-      <Field
-        className="input-row"
-        type="text"
-        name="username"
-        placeholder="Enter Username"
-      />
-      <Error touched={touched.username} message={errors.username} />
+const LoginForm = ({ errors, touched, isSubmitting }) => {
+  return (
+    <div>
+      <Form>
+        <h1 className="title">Login</h1>
 
-      <Field
-        className="input-row"
-        type="password"
-        name="password"
-        placeholder="Enter Password"
-      />
-      <Error touched={touched.password} message={errors.password} />
+        <i className="fas fa-user" />
+        <Field
+          className="input-row"
+          type="text"
+          name="username"
+          placeholder="Enter Username"
+        />
+        <Error touched={touched.username} message={errors.username} />
 
-      <button type="submit" disabled={isSubmitting}>
-        Login
-      </button>
-      <div className="center">
-        <Link to="/signup">Not a Member? Register Here</Link>
-      </div>
-    </Form>
-  </div>
-);
+        <i className="fas fa-key" />
+        <Field
+          className="input-row"
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+        />
+        <Error touched={touched.password} message={errors.password} />
+
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
+        <div className="center">
+          <Link to="/signup">Not a Member? Register Here</Link>
+        </div>
+      </Form>
+    </div>
+  );
+};
 
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password }) {

@@ -1,17 +1,34 @@
-import Styled from "styled-components";
+import styled from "styled-components";
 
-export const Card = Styled.div`
+export const Card = styled.div`
   justify-content: center;
   align-items: center;
   border: solid 2px black;
   border-radius: 10px;
-  margin: 20px 10px;
-  font-size: 0.8rem;
+  margin: 40px 10px;
+  font-size: 1rem;
   background-color: #fffff5;
+  opacity: 88%;
+  box-shadow: 5px 10px 2px #2d2b2b;
 `;
 
-export const DivContainer = Styled.div`
+export const DivContainer = styled.div`
   margin: 20px;
+`;
+
+export const ButtonLinkContainer = styled.div`
+  margin: 10px 0;
+`;
+
+export const ButtonLink = styled.button`
+  margin: 20px 0;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 10px;
+  color: black;
+  margin-top: 20px;
+  border-radius: 2px;
+  font-size: 15px;
 `;
 
 export const SchoolsStyleDiv = {
@@ -23,17 +40,3 @@ export const SchoolsStyleDiv = {
   justifyContent: "center",
   width: "90%"
 };
-
-export const ButtonLinkContainer = Styled.div`
-  margin: 10px 0;
-`;
-
-export const ButtonLink = Styled.button`
-  margin: 20px 0;
-  text-decoration: none;
-  border: 1px solid black;
-  padding: 5px;
-  color: black;
-  margin-top: 20px;
-  border-radius: 2px;
-`;

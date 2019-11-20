@@ -103,3 +103,30 @@ button {
 .title {
   color: #123C69;
 }
+
+.fa-user, .fa-key {
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.pop-out {
+  transition: transform .2s;
+}
+
+.pop-out:hover {
+  transform: scale(1.05)
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.pop-out {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1.4s ease-out 0s 1 slideInFromLeft;
+}
