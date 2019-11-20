@@ -39,7 +39,7 @@ const SchoolCard = ({ id, school, email, address, funds_needed, funds_given, goa
 						<i className="fas fa-envelope-square" /> Email: {email}
 					</p>
 					<p>
-						<i class="fas fa-map-pin" /> Address: {address}
+						<i className="fas fa-map-pin" /> Address: {address}
 					</p>
 					<p>Funds Needed: {funds_needed}</p>
 					{/*<p>Funds Given: {funds_given}</p>
