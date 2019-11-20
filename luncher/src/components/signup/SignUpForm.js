@@ -1,49 +1,74 @@
-/* eslint-disable no-alert */
 /* eslint-disable no-console */
 import React from "react";
-import { Formik } from "formik";
-// import axios from "axios";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import Error from "../error/Error";
 
-function SignUpForm() {
+const SignUpForm = ({ errors, touched, isSubmitting }) => {
   return (
-    <Formik>
-      <form>
-        <h1>Sign Up</h1>
-        <div className="input-row">
-          <label htmlFor="name">School Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter School Name"
-          />
-        </div>
-        <div className="input-row">
-          <label htmlFor="email">School Email</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Enter School Email"
-          />
-        </div>
-        <div className="input-row">
-          <label htmlFor="address">School Address</label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Enter School Address"
-          />
-        </div>
-        <div className="input-row">
-          <button type="submit">Submit</button>
+    <div>
+      <Form>
+        <h1 className="title">Create Your Account</h1>
+        <Field
+          className="input-row"
+          type="text"
+          name="username"
+          placeholder="Create Username"
+        />
+        <Error touched={touched.username} message={errors.username} />
 
-          <button type="reset">Reset</button>
+        <Field
+          className="input-row"
+          type="password"
+          name="password"
+          placeholder="Create Password"
+        />
+        <Error touched={touched.password} message={errors.password} />
+
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
+        <div className="center">
+          <Link to="/signup">Not a Member? Register Here</Link>
         </div>
-      </form>
-    </Formik>
+      </Form>
+    </div>
   );
-}
+};
 
-export default SignUpForm;
+const FormikSignUpForm = withFormik({
+  mapPropsToValues({ username, password }) {
+    return {
+      username: username || "",
+      password: password || ""
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    username: Yup.string()
+      .min(5)
+      .required("A School Name is Required"),
+    password: Yup.string()
+      .min(8)
+      .required("A password is required")
+  }),
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
+    axiosWithAuth()
+      .post("/auth/register", values)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/login");
+        console.log(res);
+        resetForm();
+        setSubmitting(false);
+      })
+      .catch(err => {
+        console.log(err, err.response);
+        setSubmitting(false);
+      });
+  }
+})(SignUpForm);
+
+export default FormikSignUpForm;
