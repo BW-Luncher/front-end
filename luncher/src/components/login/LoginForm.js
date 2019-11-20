@@ -11,7 +11,7 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
-        <h1 className="title">Login:</h1>
+        <h1 className="title">Login</h1>
 
         <i className="fas fa-user" />
         <Field
