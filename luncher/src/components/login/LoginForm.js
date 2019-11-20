@@ -1,37 +1,43 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-console */
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import { Link } from "react-router-dom";
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import Error from "../error/Error";
 
-function LoginForm() {
+const LoginForm = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
-      <h1 className="title">Login</h1>
+        <h1 className="title">Login</h1>
         <Field
           className="input-row"
           type="text"
           name="username"
           placeholder="Enter Username"
-          required
         />
+        <Error touched={touched.username} message={errors.username} />
+
         <Field
           className="input-row"
           type="password"
           name="password"
           placeholder="Enter Password"
-          required
         />
-        <button type="submit">Login</button>
+        <Error touched={touched.password} message={errors.password} />
+
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
         <div className="center">
           <Link to="/signup">Not a Member? Register Here</Link>
         </div>
       </Form>
     </div>
   );
-}
+};
 
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password }) {
@@ -46,14 +52,16 @@ const FormikLoginForm = withFormik({
       .min(5)
       .required("A Username is Required"),
     password: Yup.string()
-      .min(8)
+      .min(4)
       .required("A Password is Required")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    axios
-      .post("Link", values)
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
+    axiosWithAuth()
+      .post("/auth/login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.payload);
+        props.userHasAuthenticated(true);
+        props.history.push("/profile");
         console.log(res);
         resetForm();
         setSubmitting(false);

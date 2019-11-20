@@ -21,7 +21,7 @@ const Schools = () => {
 
   useEffect(() => {
     axios
-      .get("http://lambdaluncher.herokuapp.com/api/schools")
+      .get("https://lambdaluncher.herokuapp.com/api/schools")
       .then(res => {
         setSchool(res.data);
       })

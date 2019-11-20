@@ -1,0 +1,12 @@
+.form-message {
+  font-size: 12px;
+  padding-top: 2px;
+}
+
+.form-message.valid {
+  color: #4caf50;
+}
+
+.form-message.invalid {
+  color: #f44336;
+}

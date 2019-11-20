@@ -1,28 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { PrivateRoute } from "./utils/PrivateRoute";
+import { Link, withRouter } from "react-router-dom";
+import styled from "styled-components";
+import Routes from "./components/routes/Routes";
 
-import Header from "./components/header/Header";
-import FormikLoginForm from "./components/login/LoginForm";
-import Schools from "./components/schools/Schools";
-import FormikSignUpForm from "./components/signup/SignUpForm";
-import Profile from "./components/profile/Profile";
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  float: left;
+  color: white;
+  display: block;
+  color: #1d17c7;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+`;
 
-function App() {
+function App(props) {
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
+
+  function handleLogout() {
+    userHasAuthenticated(false);
+    localStorage.clear();
+    props.history.push("/login");
+  }
+
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <Route component={Schools} exact path="/" />
-          <Route component={FormikLoginForm} path="/login" />
-          <Route component={FormikSignUpForm} path="/signup" />
-          <PrivateRoute path="/profile" redirect="/" component={Profile} />
-        </Switch>
-      </Router>
+      <nav>
+        <div className="navbar">
+          <a href="https://suspicious-hermann-726996.netlify.com/index.html">
+            Luncher
+          </a>
+          <StyledLink to="/">Schools</StyledLink>
+        </div>
+
+        <div className="navbar">
+          {isAuthenticated ? (
+            <>
+              <StyledLink to="/profile">Profile</StyledLink>
+              <StyledLink onClick={handleLogout}>Logout</StyledLink>
+            </>
+          ) : (
+            <>
+              <StyledLink to="/login">Login</StyledLink>
+              <StyledLink to="/signup">Sign Up</StyledLink>
+            </>
+          )}
+        </div>
+      </nav>
+      <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
+
+// <AppliedRoute path="/" exact component={Home} appProps={appProps} />
+// <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
+// <Route component={NotFound} />
