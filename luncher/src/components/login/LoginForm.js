@@ -12,6 +12,7 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
     <div>
       <Form>
         <h1 className="title">Login</h1>
+        <h2>test</h2>
         <Field
           className="input-row"
           type="text"
@@ -52,7 +53,7 @@ const FormikLoginForm = withFormik({
       .min(5)
       .required("A Username is Required"),
     password: Yup.string()
-      .min(8)
+      .min(4)
       .required("A Password is Required")
   }),
   handleSubmit(values, { resetForm, setSubmitting, props }) {
