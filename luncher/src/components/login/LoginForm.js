@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from "react";
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 function LoginForm() {
 	return (
@@ -11,7 +12,7 @@ function LoginForm() {
 				<Field className="input-row" type="text" name="username" placeholder="Enter Username" required />
 				<Field className="input-row" type="password" name="password" placeholder="Enter Password" required />
 				<button type="submit">Login</button>
-				<div>
+				<div className="center">
 					<Link to="/signup">Register Here</Link>
 				</div>
 			</Form>
