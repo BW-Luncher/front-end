@@ -8,6 +8,7 @@ function SignUpForm() {
   return (
     <div>
       <Form>
+        <h1 className="title">Create Your Account</h1>
         <Field
           className="input-row"
           type="text"

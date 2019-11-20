@@ -10,6 +10,7 @@ function LoginForm() {
   return (
     <div>
       <Form>
+        <h1 className="title">Login</h1>
         <Field
           className="input-row"
           type="text"
@@ -26,7 +27,7 @@ function LoginForm() {
         />
         <button type="submit">Login</button>
         <div className="center">
-          <Link to="/signup">Register Here</Link>
+          <Link to="/signup">Not a Member? Register Here</Link>
         </div>
       </Form>
     </div>

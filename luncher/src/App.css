@@ -99,3 +99,7 @@ button {
   align-items: center;
   flex-direction: column;
 }
+
+.title {
+  color: #123C69;
+}
