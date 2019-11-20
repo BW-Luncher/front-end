@@ -1,16 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { SchoolContextProvider } from "../../context/SchoolContext";
 import { PrivateRoute } from "../../utils/PrivateRoute";
-
 import AppliedRoute from "../../utils/AppliedRoute";
+
 import FormikLoginForm from "../login/LoginForm";
-import Schools from "../schools/Schools";
 import FormikSignUpForm from "../signup/SignUpForm";
+import SchoolList from "../schools/SchoolList";
 import Profile from "../profile/Profile";
 
-export default function Routes({ appProps }) {
-  return (
-    <div>
+const Routes = ({ appProps }) => (
+  <div>
+    <SchoolContextProvider>
       <Switch>
         <AppliedRoute
           component={FormikLoginForm}
@@ -18,7 +19,7 @@ export default function Routes({ appProps }) {
           appProps={appProps}
         />
 
-        <Route component={Schools} exact path="/" />
+        <Route component={SchoolList} exact path="/" />
         <Route component={FormikSignUpForm} path="/signup" />
         <PrivateRoute path="/profile" redirect="/" component={Profile} />
         <Route
@@ -27,6 +28,7 @@ export default function Routes({ appProps }) {
           }}
         />
       </Switch>
-    </div>
-  );
-}
+    </SchoolContextProvider>
+  </div>
+);
+export default Routes;
