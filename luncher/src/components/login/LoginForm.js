@@ -12,7 +12,6 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
     <div>
       <Form>
         <h1 className="title">Login</h1>
-        {/* <h2>test1</h2> */}
         <Field
           className="input-row"
           type="text"
