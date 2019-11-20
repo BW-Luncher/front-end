@@ -1,12 +1,12 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import { Link } from "react-router-dom";
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-function LoginForm() {
+const LoginForm = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
@@ -16,23 +16,27 @@ function LoginForm() {
           type="text"
           name="username"
           placeholder="Enter Username"
-          required
         />
+        {touched.username && errors.username && <p>{errors.username}</p>}
+
         <Field
           className="input-row"
           type="password"
           name="password"
           placeholder="Enter Password"
-          required
         />
-        <button type="submit">Login</button>
+        {touched.password && errors.password && <p>{errors.password}</p>}
+
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
         <div className="center">
           <Link to="/signup">Not a Member? Register Here</Link>
         </div>
       </Form>
     </div>
   );
-}
+};
 
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password }) {
@@ -50,11 +54,13 @@ const FormikLoginForm = withFormik({
       .min(8)
       .required("A Password is Required")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    axios
-      .post("Link", values)
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
+    axiosWithAuth()
+      .post("/auth/login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.payload);
+        props.userHasAuthenticated(true);
+        props.history.push("/profile");
         console.log(res);
         resetForm();
         setSubmitting(false);

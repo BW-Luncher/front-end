@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-function SignUpForm() {
+const SignUpForm = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
@@ -14,23 +15,27 @@ function SignUpForm() {
           type="text"
           name="username"
           placeholder="Create Username"
-          required
         />
+        {touched.username && errors.username && <p>{errors.username}</p>}
+
         <Field
           className="input-row"
-          type="text"
-          name="pasword"
+          type="password"
+          name="password"
           placeholder="Create Password"
-          required
         />
-        <button type="submit">Sign Up</button>
+        {touched.password && errors.password && <p>{errors.password}</p>}
+
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
         <div className="center">
-          <Link to="/login">Already a Member? Login Here</Link>
+          <Link to="/signup">Not a Member? Register Here</Link>
         </div>
       </Form>
     </div>
   );
-}
+};
 
 const FormikSignUpForm = withFormik({
   mapPropsToValues({ username, password }) {
@@ -44,13 +49,16 @@ const FormikSignUpForm = withFormik({
     username: Yup.string()
       .min(5)
       .required("A School Name is Required"),
-    password: Yup.string().required("A password is required")
+    password: Yup.string()
+      .min(8)
+      .required("A password is required")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    axios
-      .post("Link", values)
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
+    axiosWithAuth()
+      .post("/auth/register", values)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/login");
         console.log(res);
         resetForm();
         setSubmitting(false);
