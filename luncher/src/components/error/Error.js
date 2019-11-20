@@ -8,7 +8,7 @@ const Error = ({ touched, message }) => {
   if (message) {
     return <div className="form-message invalid">{message}</div>;
   }
-  return <div className="form-message valid">&nbsp;</div>;
+  return <div className="form-message">&nbsp;</div>;
 };
 
 export default Error;

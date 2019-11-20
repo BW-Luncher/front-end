@@ -4,6 +4,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import Error from "../error/Error";
 
 const SignUpForm = ({ errors, touched, isSubmitting }) => {
   return (
@@ -16,7 +17,7 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => {
           name="username"
           placeholder="Create Username"
         />
-        {touched.username && errors.username && <p>{errors.username}</p>}
+        <Error touched={touched.username} message={errors.username} />
 
         <Field
           className="input-row"
@@ -24,7 +25,7 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => {
           name="password"
           placeholder="Create Password"
         />
-        {touched.password && errors.password && <p>{errors.password}</p>}
+        <Error touched={touched.password} message={errors.password} />
 
         <button type="submit" disabled={isSubmitting}>
           Login

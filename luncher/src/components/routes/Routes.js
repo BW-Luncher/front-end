@@ -7,7 +7,6 @@ import FormikLoginForm from "../login/LoginForm";
 import Schools from "../schools/Schools";
 import FormikSignUpForm from "../signup/SignUpForm";
 import Profile from "../profile/Profile";
-import NotFound from "../notfound/NotFound";
 
 export default function Routes({ appProps }) {
   return (
@@ -22,7 +21,11 @@ export default function Routes({ appProps }) {
         <Route component={Schools} exact path="/" />
         <Route component={FormikSignUpForm} path="/signup" />
         <PrivateRoute path="/profile" redirect="/" component={Profile} />
-        <Route component={NotFound} />
+        <Route
+          render={() => {
+            return <img src="https://http.cat/404" alt="Not Found" />;
+          }}
+        />
       </Switch>
     </div>
   );
