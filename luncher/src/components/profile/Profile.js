@@ -6,63 +6,61 @@ import * as Yup from "yup";
 import { withFormik, Form, Field } from "formik";
 import Error from "../error/Error";
 
-function LoginForm({ isSubmitting, touched, errors }) {
-  return (
-    <Form>
-      <h1>Welcome User</h1>
-      <h2>Create a School Profile</h2>
-      <Field
-        className="input-row"
-        type="text"
-        name="school"
-        id="school"
-        placeholder="Enter School's Name"
-      />
-      <Error touched={touched.school} message={errors.school} />
+const LoginForm = ({ isSubmitting, touched, errors }) => (
+  <Form>
+    <h1>Welcome User</h1>
+    <h2>Create a School Profile</h2>
+    <Field
+      className="input-row"
+      type="text"
+      name="school"
+      id="school"
+      placeholder="Enter School's Name"
+    />
+    <Error touched={touched.school} message={errors.school} />
 
-      <Field
-        className="input-row"
-        type="text"
-        name="school_insignia"
-        id="school_insignia"
-        placeholder="Enter URL for picture of school"
-      />
-      <Error />
+    <Field
+      className="input-row"
+      type="text"
+      name="school_insignia"
+      id="school_insignia"
+      placeholder="Enter URL for picture of school"
+    />
+    <Error />
 
-      <Field
-        className="input-row"
-        type="text"
-        name="address"
-        id="address"
-        placeholder="Enter School's Address"
-      />
-      <Error touched={touched.address} message={errors.address} />
+    <Field
+      className="input-row"
+      type="text"
+      name="address"
+      id="address"
+      placeholder="Enter School's Address"
+    />
+    <Error touched={touched.address} message={errors.address} />
 
-      <Field
-        className="input-row"
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter School's Email"
-      />
-      <Error touched={touched.email} message={errors.email} />
+    <Field
+      className="input-row"
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Enter School's Email"
+    />
+    <Error touched={touched.email} message={errors.email} />
 
-      <Field
-        className="input-row"
-        type="number"
-        name="funds_needed"
-        id="funds needed"
-        placeholder="Enter School's Amount of Funds Needed"
-      />
-      <Error touched={touched.funds_needed} message={errors.funds_needed} />
+    <Field
+      className="input-row"
+      type="number"
+      name="funds_needed"
+      id="funds needed"
+      placeholder="Enter School's Amount of Funds Needed"
+    />
+    <Error touched={touched.funds_needed} message={errors.funds_needed} />
 
-      <button type="submit" disabled={isSubmitting}>
-        Create Profile
-      </button>
-      <button type="reset">Reset</button>
-    </Form>
-  );
-}
+    <button type="submit" disabled={isSubmitting}>
+      Create Profile
+    </button>
+    <button type="reset">Reset</button>
+  </Form>
+);
 
 const Profile = withFormik({
   mapPropsToValues({ school, school_insignia, address, email, funds_needed }) {
@@ -91,7 +89,7 @@ const Profile = withFormik({
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
     axios
-      .post("http://lambdaluncher.herokuapp.com/api/schools", values)
+      .put("http://lambdaluncher.herokuapp.com/api/schools", values)
       .then(res => {
         console.log(res);
         resetForm();
