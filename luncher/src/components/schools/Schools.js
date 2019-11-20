@@ -8,8 +8,8 @@ const DivContainerStyle = styled.div``;
 
 const SchoolsStyleDiv = {
   display: "grid",
-  gridGap: "1rem",
-  gridTemplateColumns: "repeat(auto-fill, 390px)",
+  gridGap: ".5rem",
+  gridTemplateColumns: "repeat(auto-fill, 400px)",
   fontSize: "15px",
   margin: " auto",
   justifyContent: "center",
