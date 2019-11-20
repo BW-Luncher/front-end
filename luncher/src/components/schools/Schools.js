@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import schoolInformation from "../../data/data";
+import styled from "styled-components";
 import SchoolCard from "./SchoolCard";
-import styled from 'styled-components';
 
 const DivContainerStyle = styled.div``;
 

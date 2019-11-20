@@ -64,7 +64,7 @@ const Profile = withFormik({
     axios
       .post("http://lambdaluncher.herokuapp.com/api/schools", values)
       .then(res => {
-        console.log(res); 
+        console.log(res);
         resetForm();
         setSubmitting(false);
       })
@@ -73,7 +73,7 @@ const Profile = withFormik({
         alert("An Account was created, Please Login.");
       })
       .catch(err => {
-        console.log(err, err.response); 
+        console.log(err, err.response);
         setSubmitting(false);
       });
   }
