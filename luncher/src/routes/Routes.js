@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { SchoolContextProvider } from "../context/SchoolContext";
-import { PrivateRoute } from "../utils/PrivateRoute";
-import AppliedRoute from "../utils/AppliedRoute";
+import { PrivateRoute } from "./PrivateRoute";
+import AppliedRoute from "./AppliedRoute";
 
 import FormikLoginForm from "../components/login/LoginForm";
 import FormikSignUpForm from "../components/signup/SignUpForm";
