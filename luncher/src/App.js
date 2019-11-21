@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import Routes from "./components/routes/Routes";
+import Routes from "./routes/Routes";
 
 const StyledLink = styled(Link)`
   text-decoration: none;

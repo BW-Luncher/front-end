@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { SchoolContextProvider } from "../../context/SchoolContext";
-import { PrivateRoute } from "../../utils/PrivateRoute";
-import AppliedRoute from "../../utils/AppliedRoute";
+import { SchoolContextProvider } from "../context/SchoolContext";
+import { PrivateRoute } from "../utils/PrivateRoute";
+import AppliedRoute from "../utils/AppliedRoute";
 
-import FormikLoginForm from "../login/LoginForm";
-import FormikSignUpForm from "../signup/SignUpForm";
-import SchoolList from "../schools/SchoolList";
-import Profile from "../profile/Profile";
+import FormikLoginForm from "../components/login/LoginForm";
+import FormikSignUpForm from "../components/signup/SignUpForm";
+import SchoolList from "../components/schools/SchoolList";
+import Profile from "../components/profile/Profile";
 
 const Routes = ({ appProps }) => (
   <div>
