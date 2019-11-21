@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { SchoolContextProvider } from "../context/SchoolContext";
+import { SchoolContextProvider } from "../contexts/SchoolContext";
 import { PrivateRoute } from "./PrivateRoute";
 import AppliedRoute from "./AppliedRoute";
 
@@ -9,15 +9,11 @@ import FormikSignUpForm from "../components/signup/SignUpForm";
 import SchoolList from "../components/schools/SchoolList";
 import Profile from "../components/profile/Profile";
 
-const Routes = ({ appProps }) => (
+const Routes = () => (
   <div>
     <SchoolContextProvider>
       <Switch>
-        <AppliedRoute
-          component={FormikLoginForm}
-          path="/login"
-          appProps={appProps}
-        />
+        <AppliedRoute component={FormikLoginForm} path="/login" />
 
         <Route component={SchoolList} exact path="/" />
         <Route component={FormikSignUpForm} path="/signup" />

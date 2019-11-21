@@ -1,109 +1,91 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
-import React from "react";
-import axios from "axios";
-import * as Yup from "yup";
-import { withFormik, Form, Field } from "formik";
-import Error from "../../error/Error";
+import React, { useContext, useState } from "react";
+import { SchoolContext } from "../../contexts/SchoolContext";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-const LoginForm = ({ isSubmitting, touched, errors }) => (
-  <Form>
-    <h1>Welcome User</h1>
-    <h2>Create a School Profile</h2>
-    <Field
-      className="input-row"
-      type="text"
-      name="school"
-      id="school"
-      placeholder="Enter School's Name"
-    />
-    <Error touched={touched.school} message={errors.school} />
+const Profile = () => {
+  const { schools, setSchools } = useContext(SchoolContext);
+  const [item, setItem] = useState([
+    {
+      school: "",
+      role: "",
+      address: "",
+      email: "",
+      funds_needed: "",
+      goal: ""
+    }
+  ]);
 
-    <Field
-      className="input-row"
-      type="text"
-      name="school_insignia"
-      id="school_insignia"
-      placeholder="Enter URL for picture of school"
-    />
-    <Error />
+  const handleChange = e => {
+    setItem({ ...item, [e.target.name]: e.target.value });
+  };
 
-    <Field
-      className="input-row"
-      type="text"
-      name="address"
-      id="address"
-      placeholder="Enter School's Address"
-    />
-    <Error touched={touched.address} message={errors.address} />
-
-    <Field
-      className="input-row"
-      type="email"
-      name="email"
-      id="email"
-      placeholder="Enter School's Email"
-    />
-    <Error touched={touched.email} message={errors.email} />
-
-    <Field
-      className="input-row"
-      type="number"
-      name="funds_needed"
-      id="funds needed"
-      placeholder="Enter School's Amount of Funds Needed"
-    />
-    <Error touched={touched.funds_needed} message={errors.funds_needed} />
-
-    <button type="submit" disabled={isSubmitting}>
-      Create Profile
-    </button>
-    <button type="reset">Reset</button>
-  </Form>
-);
-
-const Profile = withFormik({
-  mapPropsToValues({ school, school_insignia, address, email, funds_needed }) {
-    return {
-      school: school || "",
-      school_insignia: school_insignia || "",
-      address: address || "",
-      email: email || "",
-      funds_needed: funds_needed || ""
-    };
-  },
-  validationSchema: Yup.object().shape({
-    school: Yup.string()
-      .min(5)
-      .required("School Name is Required"),
-    address: Yup.string()
-      .min(5)
-      .required("An Address is Required"),
-    email: Yup.string()
-      .email()
-      .required("Please Enter your Email"),
-    funds_needed: Yup.string()
-      .min(2)
-      .max(6)
-      .required("Enter an Amount")
-  }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    axios
-      .put("http://lambdaluncher.herokuapp.com/api/schools", values)
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/schools/", item)
       .then(res => {
-        console.log(res);
-        resetForm();
-        setSubmitting(false);
-      })
-      .then(res => {
-        console.log("res", res);
-        alert("An Account was created, Please Login.");
+        console.log(res.data);
+        // setSchools(res.data);
       })
       .catch(err => {
         console.log(err, err.response);
-        setSubmitting(false);
       });
-  }
-})(LoginForm);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="school"
+        placeholder="school"
+        onChange={handleChange}
+        value={item.school}
+      />
+
+      <input
+        type="text"
+        name="role"
+        placeholder="role"
+        onChange={handleChange}
+        value={item.role}
+      />
+
+      <input
+        type="text"
+        name="address"
+        placeholder="address"
+        onChange={handleChange}
+        value={item.address}
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="email"
+        onChange={handleChange}
+        value={item.email}
+      />
+
+      <input
+        type="number"
+        name="funds_needed"
+        placeholder="funds_needed"
+        onChange={handleChange}
+        value={item.funds_needed}
+      />
+
+      <input
+        type="number"
+        name="goal"
+        placeholder="goal"
+        onChange={handleChange}
+        value={item.goal}
+      />
+      <button type="submit">submit</button>
+    </form>
+  );
+};
 
 export default Profile;

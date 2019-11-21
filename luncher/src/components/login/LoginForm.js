@@ -62,8 +62,8 @@ const FormikLoginForm = withFormik({
     axiosWithAuth()
       .post("/auth/login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        props.userHasAuthenticated(true);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("isAuthenticated", true);
         props.history.push("/profile");
         console.log(res);
         resetForm();

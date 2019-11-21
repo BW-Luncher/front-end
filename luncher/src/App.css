@@ -10,7 +10,7 @@ body {
 
 * {
   margin: 0;
-  font-family: 'Alata', sans-serif;
+  font-family: "Alata", sans-serif;
 }
 
 img {
@@ -20,7 +20,19 @@ img {
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: #EDC7B7;
+  background-color: #edc7b7;
+}
+
+nav a {
+  text-decoration: none;
+  float: left;
+  display: block;
+  color: #123c69;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .navbar {
@@ -38,18 +50,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-}
-
-a {
-  text-decoration: none;
-  float: left;
-  display: block;
-  color: #123C69;;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
 }
 
 form {
@@ -101,20 +101,21 @@ button {
 }
 
 .title {
-  color: #123C69;
+  color: #123c69;
 }
 
-.fa-user, .fa-key {
+.fa-user,
+.fa-key {
   margin-top: 50px;
   font-size: 20px;
 }
 
 .pop-out {
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .pop-out:hover {
-  transform: scale(1.05)
+  transform: scale(1.05);
 }
 
 @keyframes slideInFromLeft {
@@ -126,7 +127,7 @@ button {
   }
 }
 
-.pop-out {  
+.pop-out {
   /* This section calls the slideInFromLeft animation we defined above */
   animation: 1.4s ease-out 0s 1 slideInFromLeft;
 }

@@ -6,13 +6,14 @@ export const SchoolContext = createContext();
 
 export const SchoolContextProvider = props => {
   const { children } = props;
-  const [school, setSchool] = useState([]);
+  const [schools, setSchools] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://lambdaluncher.herokuapp.com/api/schools")
       .then(res => {
-        setSchool(res.data);
+        console.log(res);
+        setSchools(res.data);
       })
       .catch(err => {
         console.log(err, err.response);
@@ -20,6 +21,8 @@ export const SchoolContextProvider = props => {
   }, []);
 
   return (
-    <SchoolContext.Provider value={[school]}>{children}</SchoolContext.Provider>
+    <SchoolContext.Provider value={{ schools, setSchools }}>
+      {children}
+    </SchoolContext.Provider>
   );
 };
