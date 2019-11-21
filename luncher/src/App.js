@@ -38,7 +38,7 @@ function App(props) {
         <div className="navbar">
           {isAuthenticated ? (
             <>
-              <StyledLink to="/profile">Profile</StyledLink>
+              <StyledLink to="/profile">Welcome User</StyledLink>
               <StyledLink onClick={handleLogout}>Logout</StyledLink>
             </>
           ) : (
@@ -55,7 +55,3 @@ function App(props) {
 }
 
 export default withRouter(App);
-
-// <AppliedRoute path="/" exact component={Home} appProps={appProps} />
-// <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
-// <Route component={NotFound} />

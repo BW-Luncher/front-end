@@ -4,7 +4,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import Error from "../error/Error";
+import Error from "../../error/Error";
 
 const SignUpForm = ({ errors, touched, isSubmitting }) => (
   <div>

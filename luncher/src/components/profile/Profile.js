@@ -4,7 +4,7 @@ import React from "react";
 import axios from "axios";
 import * as Yup from "yup";
 import { withFormik, Form, Field } from "formik";
-import Error from "../error/Error";
+import Error from "../../error/Error";
 
 const LoginForm = ({ isSubmitting, touched, errors }) => (
   <Form>
