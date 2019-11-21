@@ -8,51 +8,66 @@ import Error from "../error/Error";
 
 const LoginForm = ({ isSubmitting, touched, errors }) => (
   <Form>
-    <h1>Welcome User</h1>
-    <h2>Create a School Profile</h2>
-    <Field
-      className="input-row"
-      type="text"
-      name="school"
-      id="school"
-      placeholder="Enter School's Name"
-    />
+    <h1 className="title">Welcome User</h1>
+    <h2 className="title">Create a School Profile</h2>
+    <div className="form-div">
+      <i className="fas fa-school" />
+      <Field
+        className="input-row"
+        type="text"
+        name="school"
+        id="school"
+        placeholder="Enter School's Name"
+      />
+    </div>
     <Error touched={touched.school} message={errors.school} />
 
-    <Field
-      className="input-row"
-      type="text"
-      name="school_insignia"
-      id="school_insignia"
-      placeholder="Enter URL for picture of school"
-    />
+    <div className="form-div">
+      <i class="fas fa-link"/>
+      <Field
+        className="input-row"
+        type="text"
+        name="school_insignia"
+        id="school_insignia"
+        placeholder="Enter URL for picture of school"
+      />
+    </div>
     <Error />
 
-    <Field
-      className="input-row"
-      type="text"
-      name="address"
-      id="address"
-      placeholder="Enter School's Address"
-    />
+    <div className="form-div">
+      <i className="fas fa-map-pin" />
+      <Field
+        className="input-row"
+        type="text"
+        name="address"
+        id="address"
+        placeholder="Enter School's Address"
+      />
+    </div>
     <Error touched={touched.address} message={errors.address} />
 
-    <Field
-      className="input-row"
-      type="email"
-      name="email"
-      id="email"
-      placeholder="Enter School's Email"
-    />
+    <div className="form-div">
+      <i className="fas fa-envelope-square" />
+      <Field
+        className="input-row"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter School's Email"
+      />
+    </div>
     <Error touched={touched.email} message={errors.email} />
 
-    <Field
-      className="input-row"
-      type="number"
-      name="funds_needed"
-      id="funds needed"
-      placeholder="Enter School's Amount of Funds Needed"
-    />
+    <div className="form-div">
+      <i class="fas fa-dollar-sign" />
+      <Field
+        className="input-row"
+        type="number"
+        name="funds_needed"
+        id="funds needed"
+        placeholder="Enter School's Amount of Funds Needed"
+      />
+    </div>
     <Error touched={touched.funds_needed} message={errors.funds_needed} />
 
     <button type="submit" disabled={isSubmitting}>
