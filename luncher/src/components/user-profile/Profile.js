@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { Route } from "react-router-dom";
 import { SchoolContext } from "../../contexts/SchoolContext";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import EditSchools from "./ProfileSchools";
+import ProfileSchools from "./ProfileSchools";
 
 const Profile = props => {
   const { schools, setSchools } = useContext(SchoolContext);
@@ -93,10 +93,14 @@ const Profile = props => {
           onChange={handleChange}
           value={item.goal}
         />
-        <button type="submit">submit</button>
-        <button type="reset">reset</button>
+        <button name="submit" type="submit" value="submit">
+          submit
+        </button>
+        <button name="reset" type="reset" value="Reset">
+          reset
+        </button>
       </form>
-      <Route component={EditSchools} />
+      <Route component={ProfileSchools} />
     </div>
   );
 };

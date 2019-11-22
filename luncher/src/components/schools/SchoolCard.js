@@ -12,8 +12,7 @@ const SchoolCard = ({
   email,
   address,
   funds_needed,
-  // funds_given,
-  // goal,
+  goal,
   school_insignia
 }) => {
   return (
@@ -31,8 +30,10 @@ const SchoolCard = ({
           <p>
             <i className="fas fa-dollar-sign" /> Funds Needed: {funds_needed}
           </p>
-          {/* <p>Funds Given: {funds_given}</p>
-          <p>School's Goal: {goal}</p> */}
+          <p>
+            <i className="fas fa-dollar-sign" />
+            School's Goal: {goal}
+          </p>
           <ButtonLinkContainer>
             <ButtonLink>Donate</ButtonLink>
           </ButtonLinkContainer>

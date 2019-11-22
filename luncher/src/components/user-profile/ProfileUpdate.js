@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { SchoolContext } from "../../contexts/SchoolContext";
 
-function UpdateSchools(props) {
+const ProfileUpdate = props => {
   const { schools } = useContext(SchoolContext);
   const [education, setEducation] = useState();
 
@@ -16,6 +16,16 @@ function UpdateSchools(props) {
     funds_needed: 0,
     goal: 0
   });
+
+  // const resetForm = () => ({
+  //   school: "",
+  //   school_insignia: "",
+  //   address: "",
+  //   email: "",
+  //   funds_needed: 0,
+  //   goal: 0
+  // });
+
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
@@ -121,10 +131,12 @@ function UpdateSchools(props) {
           Delete
         </button>
 
-        <button type="reset">Reset</button>
+        <button type="reset" value="Reset">
+          Reset
+        </button>
       </form>
     </div>
   );
-}
+};
 
-export default UpdateSchools;
+export default ProfileUpdate;

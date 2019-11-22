@@ -3,10 +3,10 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import Error from "../../error/Error";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
+import Error from "../../../error/Error";
 
-const SignUpForm = ({ errors, touched, isSubmitting }) => (
+const SignUp = ({ errors, touched, isSubmitting }) => (
   <div>
     <Form>
       <h1 className="title">Create Your Account</h1>
@@ -43,7 +43,7 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => (
   </div>
 );
 
-const FormikSignUpForm = withFormik({
+const SignUpForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
       username: username || "",
@@ -74,6 +74,6 @@ const FormikSignUpForm = withFormik({
         setSubmitting(false);
       });
   }
-})(SignUpForm);
+})(SignUp);
 
-export default FormikSignUpForm;
+export default SignUpForm;

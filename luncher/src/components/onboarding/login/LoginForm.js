@@ -4,10 +4,10 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import Error from "../../error/Error";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
+import Error from "../../../error/Error";
 
-const LoginForm = ({ errors, touched, isSubmitting }) => {
+const Login = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
@@ -46,7 +46,7 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
   );
 };
 
-const FormikLoginForm = withFormik({
+const LoginForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
       username: username || "",
@@ -69,7 +69,7 @@ const FormikLoginForm = withFormik({
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("isAuthenticated", true);
         props.history.push("/profile");
-        console.log(res);
+        console.log("Logged In", res);
         resetForm();
         setSubmitting(false);
       })
@@ -78,6 +78,6 @@ const FormikLoginForm = withFormik({
         setSubmitting(false);
       });
   }
-})(LoginForm);
+})(Login);
 
-export default FormikLoginForm;
+export default LoginForm;

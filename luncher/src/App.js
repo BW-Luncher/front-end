@@ -6,6 +6,7 @@ import Routes from "./routes/Routes";
 
 function App(props) {
   const isLoggedIn = localStorage.getItem("isAuthenticated");
+
   function handleLogout() {
     localStorage.clear();
     props.history.push("/login");

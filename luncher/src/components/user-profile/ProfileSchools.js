@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { SchoolContext } from "../../contexts/SchoolContext";
 import { SchoolList } from "../schools/school.styles";
 
-const EditSchools = () => {
+const ProfileSchools = () => {
   const { schools } = useContext(SchoolContext);
 
   return (
@@ -21,4 +21,4 @@ const EditSchools = () => {
   );
 };
 
-export default EditSchools;
+export default ProfileSchools;

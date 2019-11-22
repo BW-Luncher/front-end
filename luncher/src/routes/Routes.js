@@ -4,22 +4,21 @@ import { SchoolContextProvider } from "../contexts/SchoolContext";
 import { PrivateRoute } from "./PrivateRoute";
 import AppliedRoute from "./AppliedRoute";
 
-import FormikLoginForm from "../components/login/LoginForm";
-import FormikSignUpForm from "../components/signup/SignUpForm";
+import LoginForm from "../components/onboarding/login/LoginForm";
+import SignUpForm from "../components/onboarding/signup/SignUpForm";
 import SchoolList from "../components/schools/SchoolList";
 import Profile from "../components/user-profile/Profile";
-import UpdateSchools from "../components/user-profile/ProfileUpdate";
+import ProfileUpdate from "../components/user-profile/ProfileUpdate";
 
 const Routes = () => (
   <div>
     <SchoolContextProvider>
       <Switch>
-        <AppliedRoute component={FormikLoginForm} path="/login" />
-
         <Route component={SchoolList} exact path="/" />
-        <Route component={FormikSignUpForm} path="/signup" />
+        <AppliedRoute component={LoginForm} path="/login" />
+        <Route component={SignUpForm} path="/signup" />
         <PrivateRoute path="/profile" redirect="/" component={Profile} />
-        <Route path="/update-school/:id" component={UpdateSchools} />
+        <Route path="/update-school/:id" component={ProfileUpdate} />
         <Route
           render={() => {
             return <img src="https://http.cat/404" alt="Not Found" />;
