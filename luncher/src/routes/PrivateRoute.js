@@ -7,10 +7,10 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => {
+      render={props => {
         if (localStorage.getItem("token")) {
           // if token is in storage, render the given component
-          return <Component />;
+          return <Component {...props} />;
         } else {
           return <Redirect to="/login" />;
         }
@@ -18,16 +18,3 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
-
-// export const PrivateRoute = ({ component: C, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={props =>
-//       localStorage.getItem("token") ? (
-//         <C {...props} />
-//       ) : (
-//         <Redirect to="/login" />
-//       )
-//     }
-//   />
-// );

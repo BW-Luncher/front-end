@@ -7,7 +7,8 @@ import AppliedRoute from "./AppliedRoute";
 import FormikLoginForm from "../components/login/LoginForm";
 import FormikSignUpForm from "../components/signup/SignUpForm";
 import SchoolList from "../components/schools/SchoolList";
-import Profile from "../components/profile/Profile";
+import Profile from "../components/user-profile/Profile";
+import UpdateSchools from "../components/user-profile/ProfileUpdate";
 
 const Routes = () => (
   <div>
@@ -18,6 +19,7 @@ const Routes = () => (
         <Route component={SchoolList} exact path="/" />
         <Route component={FormikSignUpForm} path="/signup" />
         <PrivateRoute path="/profile" redirect="/" component={Profile} />
+        <Route path="/update-school/:id" component={UpdateSchools} />
         <Route
           render={() => {
             return <img src="https://http.cat/404" alt="Not Found" />;

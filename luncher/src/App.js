@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./App.css";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Route } from "react-router-dom";
 import Routes from "./routes/Routes";
 
 function App(props) {
-  // const [isAuthenticated, userHasAuthenticated] = useState(false);
   const isLoggedIn = localStorage.getItem("isAuthenticated");
   function handleLogout() {
-    // userHasAuthenticated(false);
     localStorage.clear();
     props.history.push("/login");
   }
@@ -37,7 +35,7 @@ function App(props) {
           )}
         </div>
       </nav>
-      <Routes />
+      <Route component={Routes} />
     </div>
   );
 }

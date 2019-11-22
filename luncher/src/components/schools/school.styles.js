@@ -40,3 +40,11 @@ export const SchoolsStyleDiv = {
   justifyContent: "center",
   width: "90%"
 };
+
+export const SchoolList = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+`;

@@ -12,8 +12,7 @@ const SchoolCard = ({
   email,
   address,
   funds_needed,
-  // funds_given,
-  // goal,
+  goal,
   school_insignia
 }) => {
   return (
@@ -29,8 +28,8 @@ const SchoolCard = ({
             <i className="fas fa-map-pin" /> Address: {address}
           </p>
           <p>Funds Needed: {funds_needed}</p>
-          {/* <p>Funds Given: {funds_given}</p>
-          <p>School's Goal: {goal}</p> */}
+
+          <p>School's Goal: {goal}</p>
           <ButtonLinkContainer>
             <ButtonLink>Donate</ButtonLink>
           </ButtonLinkContainer>
