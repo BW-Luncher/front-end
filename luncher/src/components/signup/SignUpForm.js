@@ -22,7 +22,6 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => (
       </div>
       <Error touched={touched.username} message={errors.username} />
 
-
       <div className="form-div">
         <i className="fas fa-key" />
         <Field
@@ -34,12 +33,11 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => (
       </div>
       <Error touched={touched.password} message={errors.password} />
 
-
       <button type="submit" disabled={isSubmitting}>
         Login
       </button>
       <div className="center">
-        <Link to="/signup">Not a Member? Register Here</Link>
+        <Link to="/login">Already a Member? Log In Now</Link>
       </div>
     </Form>
   </div>

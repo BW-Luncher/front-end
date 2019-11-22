@@ -24,7 +24,6 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
         </div>
         <Error touched={touched.username} message={errors.username} />
 
-
         <div className="form-div">
           <i className="fas fa-key" />
           <Field
@@ -35,7 +34,6 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
           />
         </div>
         <Error touched={touched.password} message={errors.password} />
-
 
         <button type="submit" disabled={isSubmitting}>
           Login
