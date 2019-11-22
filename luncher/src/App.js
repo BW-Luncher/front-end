@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import { Link, withRouter, Route } from "react-router-dom";
 import Routes from "./routes/Routes";
+import LoginForm from "./components/onboarding/login/LoginForm";
 
 function App(props) {
   const isLoggedIn = localStorage.getItem("isAuthenticated");
@@ -36,6 +37,7 @@ function App(props) {
           )}
         </div>
       </nav>
+      <LoginForm />
       <Route component={Routes} />
     </div>
   );
