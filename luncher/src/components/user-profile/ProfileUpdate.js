@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { SchoolContext } from "../../contexts/SchoolContext";
 
 const ProfileUpdate = props => {
-  const { schools } = useContext(SchoolContext);
+  const { schools, render, setRender } = useContext(SchoolContext);
   const [education, setEducation] = useState();
 
   const [item, setItem] = useState({
@@ -36,6 +36,7 @@ const ProfileUpdate = props => {
       .delete(`/schools/${props.match.params.id}`)
       .then(res => {
         console.log(res);
+        setRender(!render);
         props.history.push("/");
       })
       .catch(err => console.log(err, err.response));
