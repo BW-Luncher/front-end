@@ -17,15 +17,6 @@ const ProfileUpdate = props => {
     goal: 0
   });
 
-  // const resetForm = () => ({
-  //   school: "",
-  //   school_insignia: "",
-  //   address: "",
-  //   email: "",
-  //   funds_needed: 0,
-  //   goal: 0
-  // });
-
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
@@ -48,6 +39,7 @@ const ProfileUpdate = props => {
       .put(`/schools/${props.match.params.id}`, item)
       .then(res => {
         console.log(res.data);
+        setRender(!render);
         props.history.push("/");
       })
       .catch(err => {
@@ -65,6 +57,7 @@ const ProfileUpdate = props => {
   if (!education) {
     return <h2>loading</h2>;
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
