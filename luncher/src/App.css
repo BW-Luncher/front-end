@@ -57,7 +57,7 @@ form {
   max-width: 600px;
   margin: 50px auto;
   background: #fffff5;
-  /* opacity: 75%; */
+  opacity: 0.75;
   border-radius: 5px;
   padding: 30px;
 }
