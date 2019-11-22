@@ -4,31 +4,35 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import Error from "../error/Error";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
+import Error from "../../../error/Error";
 
-const LoginForm = ({ errors, touched, isSubmitting }) => {
+const Login = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <Form>
         <h1 className="title">Login</h1>
 
-        <i className="fas fa-user" />
-        <Field
-          className="input-row"
-          type="text"
-          name="username"
-          placeholder="Enter Username"
-        />
+        <div className="form-div">
+          <i className="fas fa-user" />
+          <Field
+            className="input-row"
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+          />
+        </div>
         <Error touched={touched.username} message={errors.username} />
 
-        <i className="fas fa-key" />
-        <Field
-          className="input-row"
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-        />
+        <div className="form-div">
+          <i className="fas fa-key" />
+          <Field
+            className="input-row"
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+          />
+        </div>
         <Error touched={touched.password} message={errors.password} />
 
         <button type="submit" disabled={isSubmitting}>
@@ -42,7 +46,7 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
   );
 };
 
-const FormikLoginForm = withFormik({
+const LoginForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
       username: username || "",
@@ -62,10 +66,10 @@ const FormikLoginForm = withFormik({
     axiosWithAuth()
       .post("/auth/login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        props.userHasAuthenticated(true);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("isAuthenticated", true);
         props.history.push("/profile");
-        console.log(res);
+        console.log("Logged In", res);
         resetForm();
         setSubmitting(false);
       })
@@ -74,6 +78,6 @@ const FormikLoginForm = withFormik({
         setSubmitting(false);
       });
   }
-})(LoginForm);
+})(Login);
 
-export default FormikLoginForm;
+export default LoginForm;

@@ -3,40 +3,47 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import Error from "../error/Error";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
+import Error from "../../../error/Error";
 
-const SignUpForm = ({ errors, touched, isSubmitting }) => (
+const SignUp = ({ errors, touched, isSubmitting }) => (
   <div>
     <Form>
       <h1 className="title">Create Your Account</h1>
-      <Field
-        className="input-row"
-        type="text"
-        name="username"
-        placeholder="Create Username"
-      />
+
+      <div className="form-div">
+        <i className="fas fa-user" />
+        <Field
+          className="input-row"
+          type="text"
+          name="username"
+          placeholder="Create Username"
+        />
+      </div>
       <Error touched={touched.username} message={errors.username} />
 
-      <Field
-        className="input-row"
-        type="password"
-        name="password"
-        placeholder="Create Password"
-      />
+      <div className="form-div">
+        <i className="fas fa-key" />
+        <Field
+          className="input-row"
+          type="password"
+          name="password"
+          placeholder="Create Password"
+        />
+      </div>
       <Error touched={touched.password} message={errors.password} />
 
       <button type="submit" disabled={isSubmitting}>
         Login
       </button>
       <div className="center">
-        <Link to="/signup">Not a Member? Register Here</Link>
+        <Link to="/login">Already a Member? Log In Now</Link>
       </div>
     </Form>
   </div>
 );
 
-const FormikSignUpForm = withFormik({
+const SignUpForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
       username: username || "",
@@ -67,6 +74,6 @@ const FormikSignUpForm = withFormik({
         setSubmitting(false);
       });
   }
-})(SignUpForm);
+})(SignUp);
 
-export default FormikSignUpForm;
+export default SignUpForm;

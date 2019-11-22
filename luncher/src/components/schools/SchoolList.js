@@ -1,16 +1,17 @@
 /* eslint-disable no-console */
 import React, { useContext } from "react";
-import { SchoolContext } from "../../context/SchoolContext";
+import { SchoolContext } from "../../contexts/SchoolContext";
 import { SchoolsStyleDiv, DivContainer } from "./school.styles";
 import SchoolCard from "./SchoolCard";
 
 const SchoolList = () => {
-  const [school] = useContext(SchoolContext);
+  const { schools } = useContext(SchoolContext);
+
   return (
     <DivContainer>
       <div style={SchoolsStyleDiv}>
-        {school.map((schools, { id }) => (
-          <SchoolCard key={id} {...schools} />
+        {schools.map((school, { id }) => (
+          <SchoolCard key={id} {...school} />
         ))}
       </div>
     </DivContainer>

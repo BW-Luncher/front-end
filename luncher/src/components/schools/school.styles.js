@@ -29,6 +29,7 @@ export const ButtonLink = styled.button`
   margin-top: 20px;
   border-radius: 2px;
   font-size: 15px;
+  color: white;
 `;
 
 export const SchoolsStyleDiv = {
@@ -40,3 +41,11 @@ export const SchoolsStyleDiv = {
   justifyContent: "center",
   width: "90%"
 };
+
+export const SchoolList = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+`;
