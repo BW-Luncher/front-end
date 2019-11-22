@@ -13,23 +13,29 @@ const LoginForm = ({ errors, touched, isSubmitting }) => {
       <Form>
         <h1 className="title">Login</h1>
 
-        <i className="fas fa-user" />
-        <Field
-          className="input-row"
-          type="text"
-          name="username"
-          placeholder="Enter Username"
-        />
+        <div className="form-div">
+          <i className="fas fa-user" />
+          <Field
+            className="input-row"
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+          />
+        </div>
         <Error touched={touched.username} message={errors.username} />
 
-        <i className="fas fa-key" />
-        <Field
-          className="input-row"
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-        />
+
+        <div className="form-div">
+          <i className="fas fa-key" />
+          <Field
+            className="input-row"
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+          />
+        </div>
         <Error touched={touched.password} message={errors.password} />
+
 
         <button type="submit" disabled={isSubmitting}>
           Login

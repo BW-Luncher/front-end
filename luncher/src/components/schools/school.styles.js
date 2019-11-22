@@ -29,6 +29,7 @@ export const ButtonLink = styled.button`
   margin-top: 20px;
   border-radius: 2px;
   font-size: 15px;
+  color: white;
 `;
 
 export const SchoolsStyleDiv = {

@@ -10,21 +10,30 @@ const SignUpForm = ({ errors, touched, isSubmitting }) => (
   <div>
     <Form>
       <h1 className="title">Create Your Account</h1>
-      <Field
-        className="input-row"
-        type="text"
-        name="username"
-        placeholder="Create Username"
-      />
+
+      <div className="form-div">
+        <i className="fas fa-user" />
+        <Field
+          className="input-row"
+          type="text"
+          name="username"
+          placeholder="Create Username"
+        />
+      </div>
       <Error touched={touched.username} message={errors.username} />
 
-      <Field
-        className="input-row"
-        type="password"
-        name="password"
-        placeholder="Create Password"
-      />
+
+      <div className="form-div">
+        <i className="fas fa-key" />
+        <Field
+          className="input-row"
+          type="password"
+          name="password"
+          placeholder="Create Password"
+        />
+      </div>
       <Error touched={touched.password} message={errors.password} />
+
 
       <button type="submit" disabled={isSubmitting}>
         Login
