@@ -7,6 +7,7 @@
     "eslint": "^6.6.0",
     "formik": "^2.0.4",
     "netlify-cli": "^2.21.0",
+    "now-cli": "0.0.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.15",

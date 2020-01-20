@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { SchoolContext } from "../../contexts/SchoolContext";
 
 const ProfileUpdate = props => {
-  const { schools } = useContext(SchoolContext);
+  const { schools, render, setRender } = useContext(SchoolContext);
   const [education, setEducation] = useState();
 
   const [item, setItem] = useState({
@@ -17,15 +17,6 @@ const ProfileUpdate = props => {
     goal: 0
   });
 
-  // const resetForm = () => ({
-  //   school: "",
-  //   school_insignia: "",
-  //   address: "",
-  //   email: "",
-  //   funds_needed: 0,
-  //   goal: 0
-  // });
-
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
@@ -36,6 +27,7 @@ const ProfileUpdate = props => {
       .delete(`/schools/${props.match.params.id}`)
       .then(res => {
         console.log(res);
+        setRender(!render);
         props.history.push("/");
       })
       .catch(err => console.log(err, err.response));
@@ -47,6 +39,7 @@ const ProfileUpdate = props => {
       .put(`/schools/${props.match.params.id}`, item)
       .then(res => {
         console.log(res.data);
+        setRender(!render);
         props.history.push("/");
       })
       .catch(err => {
@@ -64,6 +57,7 @@ const ProfileUpdate = props => {
   if (!education) {
     return <h2>loading</h2>;
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

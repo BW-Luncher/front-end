@@ -7,6 +7,7 @@ export const SchoolContext = createContext();
 export const SchoolContextProvider = props => {
   const { children } = props;
   const [schools, setSchools] = useState([]);
+  const [render, setRender] = useState(false);
   schools.sort((a, b) => {
     return b.id - a.id;
   });
@@ -21,10 +22,10 @@ export const SchoolContextProvider = props => {
       .catch(err => {
         console.log(err, err.response);
       });
-  }, []);
+  }, [render]);
 
   return (
-    <SchoolContext.Provider value={{ schools, setSchools }}>
+    <SchoolContext.Provider value={{ schools, setSchools, render, setRender }}>
       {children}
     </SchoolContext.Provider>
   );
